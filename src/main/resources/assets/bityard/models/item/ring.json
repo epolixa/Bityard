@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bityard:items/ring_base",
+    "layer1": "bityard:items/ring_accent"
+  }
+}

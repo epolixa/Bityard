@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "bityard:blocks/carved_obsidian_top",
+    "side": "bityard:blocks/carved_obsidian_side"
+  }
+}

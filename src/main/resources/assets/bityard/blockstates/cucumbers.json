@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cross"
+  },
+  "variants": {
+    "age": {
+      "0": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_0"
+        }
+      },
+      "1": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_1"
+        }
+      },
+      "2": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_2"
+        }
+      },
+      "3": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_3"
+        }
+      },
+      "4": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_4"
+        }
+      }
+    }
+  }
+}

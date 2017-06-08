@@ -1,0 +1,36 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "entryName": "frog",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 7
+            }
+          ],
+          "weight": 100,
+          "quality": 1
+        },
+        {
+          "entryName": "turtle",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 12
+            }
+          ],
+          "weight": 100,
+          "quality": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "entryName": "pupfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 9
+            }
+          ],
+          "weight": 60,
+          "quality": 1
+        }
+      ]
+    }
+  ]
+}

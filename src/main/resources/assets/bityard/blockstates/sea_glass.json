@@ -1,0 +1,55 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "color": {
+      "white": {
+        "model": "bityard:sea_glass/sea_glass_white"
+      },
+      "orange": {
+        "model": "bityard:sea_glass/sea_glass_orange"
+      },
+      "magenta": {
+        "model": "bityard:sea_glass/sea_glass_magenta"
+      },
+      "light_blue": {
+        "model": "bityard:sea_glass/sea_glass_light_blue"
+      },
+      "yellow": {
+        "model": "bityard:sea_glass/sea_glass_yellow"
+      },
+      "lime": {
+        "model": "bityard:sea_glass/sea_glass_lime"
+      },
+      "pink": {
+        "model": "bityard:sea_glass/sea_glass_pink"
+      },
+      "gray": {
+        "model": "bityard:sea_glass/sea_glass_gray"
+      },
+      "silver": {
+        "model": "bityard:sea_glass/sea_glass_silver"
+      },
+      "cyan": {
+        "model": "bityard:sea_glass/sea_glass_cyan"
+      },
+      "purple": {
+        "model": "bityard:sea_glass/sea_glass_purple"
+      },
+      "blue": {
+        "model": "bityard:sea_glass/sea_glass_blue"
+      },
+      "brown": {
+        "model": "bityard:sea_glass/sea_glass_brown"
+      },
+      "green": {
+        "model": "bityard:sea_glass/sea_glass_green"
+      },
+      "red": {
+        "model": "bityard:sea_glass/sea_glass_red"
+      },
+      "black": {
+        "model": "bityard:sea_glass/sea_glass_black"
+      }
+    }
+  }
+}

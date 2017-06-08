@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "bityard:items/fishing_rod_baited"
+  }
+}

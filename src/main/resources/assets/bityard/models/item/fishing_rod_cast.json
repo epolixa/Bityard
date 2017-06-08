@@ -1,0 +1,6 @@
+{
+  "parent": "bityard:item/fishing_rod",
+  "textures": {
+    "layer0": "minecraft:items/fishing_rod_cast"
+  }
+}

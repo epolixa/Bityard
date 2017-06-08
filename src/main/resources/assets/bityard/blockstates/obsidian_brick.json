@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "variant": {
+      "obsidian_brick": {
+        "model": "bityard:obsidian_brick"
+      },
+      "carved_obsidian": {
+        "model": "bityard:carved_obsidian"
+      }
+    }
+  }
+}

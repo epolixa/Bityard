@@ -1,0 +1,16 @@
+[
+{
+  "modid": "bityard",
+  "name": "Bityard",
+  "description": "Imagined by the Bityard community",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "bityard.epolixa.com",
+  "updateUrl": "",
+  "authorList": ["epolixa", "daydrifter", "SailorPupper", "Natsirk", "MasterDisaster64"],
+  "credits": "Developed by epolixa with many textures by the Bityard and MCA communities",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

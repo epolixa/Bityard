@@ -1,0 +1,75 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "entryName": "jellyfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 2
+            }
+          ],
+          "weight": 60,
+          "quality": 1
+        },
+        {
+          "entryName": "pufferfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 3
+            }
+          ],
+          "weight": 25,
+          "quality": 2
+        },
+        {
+          "entryName": "clownfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 4
+            }
+          ],
+          "weight": 25,
+          "quality": 2
+        },
+        {
+          "entryName": "sunfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 5
+            }
+          ],
+          "weight": 25,
+          "quality": 2
+        },
+        {
+          "entryName": "stingray",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 13
+            }
+          ],
+          "weight": 25,
+          "quality": 2
+        }
+      ]
+    }
+  ]
+}

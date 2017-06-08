@@ -1,0 +1,49 @@
+{
+  "pools": [
+    {
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+          "entryName": "ladybug",
+          "type": "item",
+          "name": "bityard:bug",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 0
+            }
+          ],
+          "weight": 30,
+          "quality": 1
+        },
+        {
+          "entryName": "butterfly",
+          "type": "item",
+          "name": "bityard:bug",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 6
+            }
+          ],
+          "weight": 40,
+          "quality": 1
+        },
+        {
+          "entryName": "grasshopper",
+          "type": "item",
+          "name": "bityard:bug",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 7
+            }
+          ],
+          "weight": 30,
+          "quality": 2
+        }
+      ]
+    }
+  ]
+}

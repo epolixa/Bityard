@@ -1,0 +1,8 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "axis=y": { "model": "bityard:wither_bone_block" },
+    "axis=z": { "model": "bityard:wither_bone_block", "x": 90 },
+    "axis=x": { "model": "bityard:wither_bone_block", "x": 90, "y": 90 }
+  }
+}
