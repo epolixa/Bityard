@@ -5,6 +5,7 @@ import com.epolixa.bityard.block.BityardBlocks;
 import com.epolixa.bityard.entity.EntityBityardFishHook;
 import com.epolixa.bityard.entity.EntityBugSwarm;
 import com.epolixa.bityard.event.BityardEventHandlers;
+import com.epolixa.bityard.event.FishHookSpawnHandler;
 import com.epolixa.bityard.event.PlayerSitHandler;
 import com.epolixa.bityard.gameplay.BityardLootTables;
 import com.epolixa.bityard.item.BityardItems;
@@ -50,6 +51,7 @@ public class CommonProxy {
 
         int entityId = 0;
         EntityRegistry.registerModEntity(new ResourceLocation("minecraft:textures/particle/particles.png"), EntityBityardFishHook.class, "fish_hook", entityId++, Bityard.instance, 64, 10, true);
+        FishHookSpawnHandler.init();
         EntityRegistry.registerModEntity(new ResourceLocation("minecraft:textures/particle/particles.png"), PlayerSitHandler.Seat.class, "seat", entityId++, Bityard.instance, 64, 10, true);
         EntityRegistry.registerModEntity(new ResourceLocation("minecraft:textures/particle/particles.png"), EntityBugSwarm.class, "bug_swarm", entityId++, Bityard.instance, 64, 10, true);
         //EntityRegistry.addSpawn(EntityBugSwarm.class, 6, 1, 5, EnumCreatureType.AMBIENT, Biomes.FOREST);

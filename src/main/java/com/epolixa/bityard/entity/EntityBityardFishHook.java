@@ -1,5 +1,6 @@
 package com.epolixa.bityard.entity;
 
+import com.epolixa.bityard.Bityard;
 import com.epolixa.bityard.gameplay.BityardLootTables;
 import com.epolixa.bityard.item.BityardItems;
 import com.epolixa.bityard.item.ItemFish;
@@ -73,18 +74,16 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     public EntityBityardFishHook(World worldIn)
     {
-        this(worldIn, worldIn.playerEntities.get(0)); // wtf forge
+        this(worldIn, null); // wtf forge
         System.out.println("fish hook: constructor 3 used");
     }
 
     private void init(EntityPlayer player)
     {
-        System.out.println("fish hook: init");
+        Bityard.log("EntityBityardFishHook", "fish hook: init");
         this.setSize(0.25F, 0.25F);
         this.ignoreFrustumCheck = true;
-        System.out.println("fish hook: looking for player near " + this.posX + ", " + this.posY + ", " + this.posZ);
-        this.angler = this.world.getClosestPlayer(this.posX, this.posY, this.posZ, 16, false);
-        System.out.println("fish hook: angler = " + this.angler.toString());
+        this.angler = player;
         this.angler.fishEntity = this;
     }
 
@@ -737,10 +736,10 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
             double d0 = this.angler.posX - this.posX;
             double d1 = this.angler.posY - this.posY;
             double d2 = this.angler.posZ - this.posZ;
-            double d3 = 0.1D;
-            this.caughtEntity.motionX += d0 * 0.1D;
-            this.caughtEntity.motionY += d1 * 0.1D;
-            this.caughtEntity.motionZ += d2 * 0.1D;
+            double d3 = 0.25D;
+            this.caughtEntity.motionX += d0 * d3;
+            this.caughtEntity.motionY += Math.max(d1 * d3, 0.6D);
+            this.caughtEntity.motionZ += d2 * d3;
         }
     }
 
