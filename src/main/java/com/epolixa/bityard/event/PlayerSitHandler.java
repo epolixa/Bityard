@@ -4,6 +4,8 @@ import com.epolixa.bityard.Bityard;
 import com.epolixa.bityard.gameplay.BityardKeyBinds;
 import com.epolixa.bityard.network.MessageSit;
 import com.epolixa.bityard.network.NetworkHandler;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,6 +37,13 @@ public class PlayerSitHandler
         }
     }
 
+    public static boolean canSitOn(Block block)
+    {
+        return block != Blocks.AIR ||
+               block != Blocks.WATER || block != Blocks.FLOWING_WATER ||
+               block != Blocks.LAVA || block != Blocks.FLOWING_LAVA;
+    }
+
     public static void playerSit(EntityPlayer player)
     {
         if (player != null)
@@ -46,7 +55,7 @@ public class PlayerSitHandler
                     player.dismountRidingEntity();
                 }
             }
-            else if (player.world.getBlockState(player.getPosition().add(0,-1,0)) != Blocks.AIR.getDefaultState())
+            else if (canSitOn(player.world.getBlockState(player.getPosition().add(0,-1,0)).getBlock()))
             {
                 Seat seat = new Seat(player);
                 player.world.spawnEntity(seat);

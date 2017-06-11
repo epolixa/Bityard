@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 public class BlockTomatoes extends BlockCrops
 {
-    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 4);
+    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
 
     public BlockTomatoes()
     {
@@ -31,6 +31,6 @@ public class BlockTomatoes extends BlockCrops
     @Override
     public int getMaxAge()
     {
-        return 4;
+        return 7;
     }
 }

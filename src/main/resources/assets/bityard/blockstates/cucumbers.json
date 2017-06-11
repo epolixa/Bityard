@@ -17,15 +17,30 @@
       },
       "2": {
         "textures": {
-          "cross": "bityard:blocks/cucumbers/cucumbers_stage_2"
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_1"
         }
       },
       "3": {
         "textures": {
-          "cross": "bityard:blocks/cucumbers/cucumbers_stage_3"
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_2"
         }
       },
       "4": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_2"
+        }
+      },
+      "5": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_3"
+        }
+      },
+      "6": {
+        "textures": {
+          "cross": "bityard:blocks/cucumbers/cucumbers_stage_3"
+        }
+      },
+      "7": {
         "textures": {
           "cross": "bityard:blocks/cucumbers/cucumbers_stage_4"
         }

@@ -29,12 +29,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.storage.loot.LootContext;
+import net.minecraftforge.fml.common.registry.IThrowableEntity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class EntityBityardFishHook extends EntityFishHook
+public class EntityBityardFishHook extends EntityFishHook implements IThrowableEntity
 {
     private static final DataParameter<Integer> DATA_HOOKED_ENTITY = EntityDataManager.<Integer>createKey(EntityBityardFishHook.class, DataSerializers.VARINT);
     private boolean inGround;
@@ -72,17 +73,18 @@ public class EntityBityardFishHook extends EntityFishHook
 
     public EntityBityardFishHook(World worldIn)
     {
-        super(worldIn, worldIn.playerEntities.get(0)); // wtf
+        this(worldIn, worldIn.playerEntities.get(0)); // wtf forge
         System.out.println("fish hook: constructor 3 used");
-        this.init(worldIn.playerEntities.get(0));
     }
 
-    private void init(EntityPlayer p_190626_1_)
+    private void init(EntityPlayer player)
     {
         System.out.println("fish hook: init");
         this.setSize(0.25F, 0.25F);
         this.ignoreFrustumCheck = true;
-        this.angler = p_190626_1_;
+        System.out.println("fish hook: looking for player near " + this.posX + ", " + this.posY + ", " + this.posZ);
+        this.angler = this.world.getClosestPlayer(this.posX, this.posY, this.posZ, 16, false);
+        System.out.println("fish hook: angler = " + this.angler.toString());
         this.angler.fishEntity = this;
     }
 
@@ -761,6 +763,16 @@ public class EntityBityardFishHook extends EntityFishHook
     {
         System.out.println("fish hook: set dead");
         super.setDead();
+    }
+
+    @Override
+    public Entity getThrower() {
+        return this.angler;
+    }
+
+    @Override
+    public void setThrower(Entity entity) {
+        // do nothing
     }
 
     @Override
