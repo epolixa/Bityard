@@ -9,6 +9,7 @@ public class BityardLootTables
     public static ResourceLocation BUGS_FIELD;
 
     public static ResourceLocation FISHING_OCEAN;
+    public static ResourceLocation FISHING_DEEP_OCEAN;
     public static ResourceLocation FISHING_DEEP_OCEAN_NIGHT;
     public static ResourceLocation FISHING_JUNGLE;
     public static ResourceLocation FISHING_SWAMP;
@@ -23,6 +24,7 @@ public class BityardLootTables
         BUGS_FIELD = register("gameplay/bugs/field");
 
         FISHING_OCEAN = register("gameplay/fishing/ocean");
+        FISHING_DEEP_OCEAN = register("gameplay/fishing/deep_ocean");
         FISHING_DEEP_OCEAN_NIGHT = register("gameplay/fishing/deep_ocean_night");
         FISHING_JUNGLE = register("gameplay/fishing/jungle");
         FISHING_SWAMP = register("gameplay/fishing/swamp");

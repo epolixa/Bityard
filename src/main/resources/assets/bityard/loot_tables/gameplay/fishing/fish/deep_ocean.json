@@ -16,19 +16,6 @@
           ],
           "weight": 60,
           "quality": 1
-        },
-        {
-          "entryName": "angler",
-          "type": "item",
-          "name": "bityard:fish",
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 6
-            }
-          ],
-          "weight": 40,
-          "quality": 1
         }
       ]
     }

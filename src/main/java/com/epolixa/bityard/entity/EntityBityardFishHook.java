@@ -671,9 +671,17 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
             biome == Biomes.FROZEN_OCEAN
         )
         {
-            if (biome == Biomes.DEEP_OCEAN && !isDaytime)
+            if (biome == Biomes.DEEP_OCEAN)
             {
-                lootTableLocation = BityardLootTables.FISHING_DEEP_OCEAN_NIGHT;
+                if (!isDaytime)
+                {
+                    lootTableLocation = BityardLootTables.FISHING_DEEP_OCEAN_NIGHT;
+                }
+                else
+                {
+                    lootTableLocation = BityardLootTables.FISHING_DEEP_OCEAN;
+                }
+
             }
             else
             {

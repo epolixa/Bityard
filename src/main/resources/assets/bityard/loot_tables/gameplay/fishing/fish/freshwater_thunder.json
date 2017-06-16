@@ -5,6 +5,32 @@
       "rolls": 1,
       "entries": [
         {
+          "entryName": "cod",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 0
+            }
+          ],
+          "weight": 60,
+          "quality": 1
+        },
+        {
+          "entryName": "goldfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 15
+            }
+          ],
+          "weight": 3,
+          "quality": 2
+        },
+        {
           "entryName": "electric_eel",
           "type": "item",
           "name": "bityard:fish",
@@ -14,7 +40,7 @@
               "data": 8
             }
           ],
-          "weight": 60,
+          "weight": 40,
           "quality": 1
         }
       ]

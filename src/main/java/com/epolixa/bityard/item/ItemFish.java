@@ -88,7 +88,7 @@ public class ItemFish extends ItemBase implements ItemModelProvider
         JELLYFISH(2, "jellyfish", 22.5, 17, 0, 0),
         PUFFERFISH(3, "pufferfish", 57, 10, 1, 0),
         CLOWNFISH(4, "clownfish", 8, 3, 1, 0),
-        SUNFISH(5, "sunfish", 450, 20, 1, 0),
+        SUNFISH(5, "sunfish", 450, 20, 4, 0),
         ANGLER(6, "angler", 70, 30, 1, 0),
         FROG(7, "frog", 8, 2, 0, 0),
         ELECTRIC_EEL(8, "electric_eel", 170, 30, 2, 0),
@@ -96,9 +96,11 @@ public class ItemFish extends ItemBase implements ItemModelProvider
         ARCTIC_CHAR(10, "arctic_char", 90, 13, 1, 0),
         PIRANHA(11, "piranha", 20, 6, 1, 0),
         TURTLE(12, "turtle", 16, 7, 0, 0),
-        STINGRAY(13, "stingray", 30, 10, 0, 0);
-        //SALAMANDER(14, "salamander", 200, 66, 0, 0),
-        //GOLDFISH(15, "goldfish", 6, 20, 0, 0);
+        STINGRAY(13, "stingray", 30, 10, 0, 0),
+        SALAMANDER(14, "salamander", 200, 66, 0, 0),
+        GOLDFISH(15, "goldfish", 6, 20, 0, 0),
+        BLOBFISH(16, "blobfish", 33, 13, 1, 0),
+        RAINBOW_TROUT(17, "rainbow_trout", 20, 11, 1, 0);
 
         private static final Map<Integer, ItemFish.FishType> META_LOOKUP = Maps.<Integer, ItemFish.FishType>newHashMap();
 

@@ -16,6 +16,19 @@
           ],
           "weight": 60,
           "quality": 1
+        },
+        {
+          "entryName": "goldfish",
+          "type": "item",
+          "name": "bityard:fish",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 15
+            }
+          ],
+          "weight": 3,
+          "quality": 2
         }
       ]
     }
