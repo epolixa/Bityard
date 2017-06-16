@@ -3,6 +3,7 @@ package com.epolixa.bityard.proxy;
 import com.epolixa.bityard.Bityard;
 import com.epolixa.bityard.client.renderer.BityardFishHookRenderFactory;
 import com.epolixa.bityard.entity.EntityBityardFishHook;
+import com.epolixa.bityard.event.FishHookSpawnHandler;
 import com.epolixa.bityard.gameplay.BityardKeyBinds;
 import com.epolixa.bityard.item.BityardItems;
 import com.epolixa.bityard.item.RingColor;
@@ -30,6 +31,8 @@ public class ClientProxy extends CommonProxy {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityBityardFishHook.class, new BityardFishHookRenderFactory());
         //RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderGuardianEyeBeam(Minecraft.getMinecraft().getRenderManager()));
+
+        FishHookSpawnHandler.init();
 
         // Keybindings
         BityardKeyBinds.init();

@@ -50,9 +50,9 @@ public class Bityard
 
     public static final String modid = "bityard";
     public static final String name = "Bityard";
-    public static final String version = "1.0.0_2017.05.31";
+    public static final String version = "2017.06.15_1.11.2";
     public static final String mcversion = "1.11.2";
-    private static boolean debug = true;
+    private static boolean debug = false;
 
     @Mod.Instance(modid)
     public static Bityard instance;
