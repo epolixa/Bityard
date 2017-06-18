@@ -7,4 +7,5 @@ public class BityardMessages
     public static void init() {
         NetworkHandler.register(MessageSit.class, Side.SERVER);
     }
+
 }

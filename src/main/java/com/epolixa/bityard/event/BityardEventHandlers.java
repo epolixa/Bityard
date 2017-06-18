@@ -13,5 +13,6 @@ public class BityardEventHandlers
         //MinecraftForge.EVENT_BUS.register(new ElderGuardianDropsHandler());
         MinecraftForge.EVENT_BUS.register(new WitherSkeletonDropsHandler());
         MinecraftForge.EVENT_BUS.register(new CropExpHandler());
+        MinecraftForge.EVENT_BUS.register(new NameColorHandler());
     }
 }

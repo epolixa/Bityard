@@ -3,12 +3,10 @@ package com.epolixa.bityard.item;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.world.WorldServer;
 
 public class ItemInstrument extends ItemBase implements ItemModelProvider
 {
@@ -45,16 +43,22 @@ public class ItemInstrument extends ItemBase implements ItemModelProvider
             1,
             1.25f - (playerIn.rotationPitch / 120)
         );
-        worldIn.spawnParticle(
-            EnumParticleTypes.NOTE,
-            playerIn.posX,
-            playerIn.posY + 2.2,
-            playerIn.posZ,
-            0,
-            0,
-            0,
-            0
-        );
+        if (!worldIn.isRemote)
+        {
+            WorldServer worldServer = (WorldServer) worldIn;
+            worldServer.spawnParticle(
+                    EnumParticleTypes.NOTE,
+                    playerIn.posX + ((itemRand.nextInt(8) - 4)*0.1),
+                    playerIn.posY + 2.2,
+                    playerIn.posZ + ((itemRand.nextInt(8) - 4)*0.1),
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    new int[] {0}
+            );
+        }
 
         playerIn.swingArm(handIn);
 

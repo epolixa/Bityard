@@ -19,6 +19,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -118,8 +119,23 @@ public class BlockSoulGlass extends BlockBase implements ItemModelProvider
 
             if (particleDelay <= 0)
             {
-                worldIn.spawnParticle(EnumParticleTypes.FALLING_DUST, entityIn.posX + ((random.nextDouble() * 1) - 0.5), entityIn.posY + 1 + ((random.nextDouble() * 2) - 1), entityIn.posZ + ((random.nextDouble() * 1) - 0.5), 0, 0, 0, 88);
-                particleDelay = 1 + random.nextInt(4);
+                if (!worldIn.isRemote)
+                {
+                    WorldServer worldServer = (WorldServer) worldIn;
+                    worldServer.spawnParticle(
+                            EnumParticleTypes.FALLING_DUST,
+                            entityIn.posX + ((random.nextDouble() * 1) - 0.5),
+                            entityIn.posY + 1 + ((random.nextDouble() * 2) - 1),
+                            entityIn.posZ + ((random.nextDouble() * 1) - 0.5),
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            new int[] {88}
+                    );
+                    particleDelay = 1 + random.nextInt(4);
+                }
             }
             else
             {
