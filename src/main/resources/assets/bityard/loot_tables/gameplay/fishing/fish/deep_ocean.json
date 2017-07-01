@@ -1,23 +1,17 @@
 {
-  "pools": [
-    {
-      "name": "main",
-      "rolls": 1,
-      "entries": [
-        {
-          "entryName": "blobfish",
-          "type": "item",
-          "name": "bityard:fish",
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 16
-            }
-          ],
-          "weight": 60,
-          "quality": 1
-        }
-      ]
-    }
-  ]
+    "pools": [{
+        "name": "main",
+        "rolls": 1,
+        "entries": [{
+            "entryName": "blobfish",
+            "type": "item",
+            "name": "bityard:fish",
+            "functions": [{
+                "function": "set_data",
+                "data": 16
+            }],
+            "weight": 60,
+            "quality": 1
+        }]
+    }]
 }

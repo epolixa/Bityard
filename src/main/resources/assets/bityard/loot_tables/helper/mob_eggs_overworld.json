@@ -1,0 +1,79 @@
+{
+    "pools": [{
+        "name": "main",
+        "rolls": 1,
+        "entries": [{
+            "entryName": "zombie",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:zombie}}"
+            }]
+        }, {
+            "entryName": "skeleton",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:skeleton}}"
+            }]
+        }, {
+            "entryName": "creeper",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:creeper}}"
+            }]
+        }, {
+            "entryName": "witch",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:witch}}"
+            }]
+        }, {
+            "entryName": "spider",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:spider}}"
+            }]
+        }, {
+            "entryName": "cave_spider",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:cave_spider}}"
+            }]
+        }, {
+            "entryName": "silverfish",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:silverfish}}"
+            }]
+        }, {
+            "entryName": "slime",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:slime}}"
+            }]
+        }]
+    }]
+}

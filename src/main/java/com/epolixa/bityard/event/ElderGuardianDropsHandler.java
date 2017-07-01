@@ -22,21 +22,37 @@ public class ElderGuardianDropsHandler
     {
         if (event.getEntity() instanceof EntityElderGuardian)
         {
+            int numFish = 0;
             for (int i = 0; i < event.getDrops().size(); i++)
             {
-                Item drop = event.getDrops().get(i).getEntityItem().getItem();
-                if (drop == Blocks.SPONGE.getDefaultState().withProperty(PropertyBool.create("wet"), true))
+                EntityItem entityItem = event.getDrops().get(i);
+                if (entityItem.getEntityItem().getItem() == Items.FISH)
+                {
+                    event.getDrops().remove(i--);
+                    numFish++;
+                }
+                else if (entityItem.getEntityItem().isItemEqual(new ItemStack(Blocks.SPONGE, 1, 1)))
                 {
                     event.getDrops().remove(i--);
                 }
             }
+            event.getDrops().add(
+                    new EntityItem(
+                            event.getEntity().world,
+                            event.getEntity().posX,
+                            event.getEntity().posY,
+                            event.getEntity().posZ,
+                            new ItemStack(BityardItems.RAW_FISH, numFish)
+                    )
+            );
+
             /*event.getDrops().add(
                     new EntityItem(
                         event.getEntity().world,
                         event.getEntity().posX,
                         event.getEntity().posY,
                         event.getEntity().posZ,
-                        new ItemStack(BityardItems.GUARDIAN_EYE, 1)
+                        new ItemStack(BityardItems.GUARDIAN_EYE)
                     )
             );*/
         }

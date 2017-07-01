@@ -1,0 +1,34 @@
+{
+    "pools": [{
+        "name": "main",
+        "rolls": 1,
+        "entries": [{
+            "entryName": "enderman",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:enderman}}"
+            }]
+        }, {
+            "entryName": "shulker",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:shulker}}"
+            }]
+        }, {
+            "entryName": "endermite",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:endermite}}"
+            }]
+        }]
+    }]
+}

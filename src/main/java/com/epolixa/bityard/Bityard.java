@@ -21,7 +21,7 @@ public class Bityard
 
     public static final String modid = "bityard";
     public static final String name = "Bityard";
-    public static final String version = "2017.06.15_1.11.2";
+    public static final String version = "2017.07.01_1.11.2";
     public static final String mcversion = "1.11.2";
     private static boolean debug = true;
 

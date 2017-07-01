@@ -3,10 +3,12 @@ package com.epolixa.bityard.item;
 import com.epolixa.bityard.Bityard;
 import com.epolixa.bityard.entity.EntityBityardFishHook;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
@@ -120,11 +122,8 @@ public class ItemBityardFishingRod extends ItemFishingRod implements ItemModelPr
         return new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
 
-    /**
-     * Return the enchantability factor of the item, most of the time is based on material.
-     */
-    public int getItemEnchantability()
+    public boolean canApplyAtEnchantingTable(ItemStack stack, net.minecraft.enchantment.Enchantment enchantment)
     {
-        return 1;
+        return enchantment.type.canEnchantItem(stack.getItem());
     }
 }

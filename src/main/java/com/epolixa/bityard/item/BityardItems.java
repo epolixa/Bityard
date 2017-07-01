@@ -36,8 +36,9 @@ public class BityardItems
     public static ItemGlowshroomPizza GLOWSHROOM_PIZZA;
     public static ItemFoodBase BURGER;
     public static ItemFoodBase BERRY_PIE;
-    public static ItemFoodBase ICE_CREAM;
-    public static ItemFoodBase ICE_CREAM_CHOCOLATE;
+    public static ItemFoodBase CHICKEN_POT_PIE;
+    public static ItemIceCream ICE_CREAM;
+    public static ItemIceCreamChocolate ICE_CREAM_CHOCOLATE;
     public static ItemInstrument SNARE_DRUM;
     public static ItemFoodBase ZOMBIE_JERKY;
     //public static ItemBug BUG;
@@ -48,7 +49,7 @@ public class BityardItems
     public static ItemBityardFishingRod FISHING_ROD;
     public static ItemRing RING;
     public static ItemWitherBone WITHER_BONE;
-    public static ItemBase WITHER_BONEMEAL;
+    public static ItemWitherBonemeal WITHER_BONEMEAL;
 
     public static void init()
     {
@@ -95,10 +96,11 @@ public class BityardItems
         CHEESE_PIZZA = register(new ItemFoodBase("cheese_pizza", 4, 4.6f, false));
         VEGGIE_PIZZA = register(new ItemFoodBase("veggie_pizza", 5, 5.2f, false));
         GLOWSHROOM_PIZZA = register(new ItemGlowshroomPizza());
+        ICE_CREAM = register(new ItemIceCream());
+        ICE_CREAM_CHOCOLATE = register(new ItemIceCreamChocolate());
         BURGER = register(new ItemFoodBase("burger", 13, 20, false));
         BERRY_PIE = register(new ItemFoodBase("berry_pie", 8, 4.8f, false));
-        ICE_CREAM = register(new ItemFoodBase("ice_cream", 3, 5, false));
-        ICE_CREAM_CHOCOLATE = register(new ItemFoodBase("ice_cream_chocolate", 3, 5.5f, false));
+        CHICKEN_POT_PIE = register(new ItemFoodBase("chicken_pot_pie", 12, 17.5f, false));
         SNARE_DRUM = register(new ItemInstrument("snare_drum"));
         ZOMBIE_JERKY = register(new ItemFoodBase("zombie_jerky", 2, 12.8f, true));
         //BUG = register(new ItemBug());
@@ -109,7 +111,7 @@ public class BityardItems
         FISHING_ROD = register(new ItemBityardFishingRod());
         RING = register(new ItemRing());
         WITHER_BONE = register(new ItemWitherBone());
-        WITHER_BONEMEAL = register(new ItemBase("wither_bonemeal").setCreativeTab(CreativeTabs.MATERIALS));
+        WITHER_BONEMEAL = register(new ItemWitherBonemeal());
     }
 
     private static <T extends Item> T register(T item)

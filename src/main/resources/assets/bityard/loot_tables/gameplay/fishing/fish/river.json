@@ -1,36 +1,27 @@
 {
-  "pools": [
-    {
-      "name": "main",
-      "rolls": 1,
-      "entries": [
-        {
-          "entryName": "salmon",
-          "type": "item",
-          "name": "bityard:fish",
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 1
-            }
-          ],
-          "weight": 40,
-          "quality": 1
-        },
-        {
-          "entryName": "rainbow_trout",
-          "type": "item",
-          "name": "bityard:fish",
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 17
-            }
-          ],
-          "weight": 3,
-          "quality": 2
-        }
-      ]
-    }
-  ]
+    "pools": [{
+        "name": "main",
+        "rolls": 1,
+        "entries": [{
+            "entryName": "salmon",
+            "type": "item",
+            "name": "bityard:fish",
+            "functions": [{
+                "function": "set_data",
+                "data": 1
+            }],
+            "weight": 40,
+            "quality": 1
+        }, {
+            "entryName": "rainbow_trout",
+            "type": "item",
+            "name": "bityard:fish",
+            "functions": [{
+                "function": "set_data",
+                "data": 17
+            }],
+            "weight": 3,
+            "quality": 2
+        }]
+    }]
 }

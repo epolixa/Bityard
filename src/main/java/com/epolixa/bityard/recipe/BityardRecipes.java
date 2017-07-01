@@ -27,14 +27,25 @@ public class BityardRecipes
 {
     public static void init()
     {
+        /* REMOVED/REPLACED */
+        List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();
+        for (int i = 0; i < recipeList.size(); i++)
+        {
+            IRecipe recipe = recipeList.get(i);
+            if (recipe.getRecipeOutput().getItem() == Items.FISHING_ROD) recipeList.remove(i--);
+            else if (recipe.getRecipeOutput().getItem() == Items.CARROT_ON_A_STICK) recipeList.remove(i--);
+        }
+
         /* Items */
         GameRegistry.addRecipe(new ItemStack(Items.LEATHER), new Object[] {"ww", "ww", 'w', BityardItems.BAT_WING});
         GameRegistry.addRecipe(new ItemStack(BityardItems.FISHING_ROD), new Object[] {"eew", "ews", "wei", 'e', Items.AIR, 'w', Items.STICK, 's', Items.STRING, 'i', Items.field_191525_da});
+        GameRegistry.addShapelessRecipe(new ItemStack(Items.CARROT_ON_A_STICK), BityardItems.FISHING_ROD, Items.CARROT);
         //GameRegistry.addRecipe(new ItemStack(BityardItems.BUG_NET), new Object[] {"ess", "ews", "ewe", 'e', Items.AIR, 'w', Items.STICK, 's', Items.STRING});
         GameRegistry.addRecipe(new ItemStack(BityardItems.CHEESE_PIZZA, 6), new Object[] {"ctc", "bbb", 'c', BityardItems.CHEESE, 't', BityardItems.TOMATO, 'b', Items.BREAD});
         GameRegistry.addRecipe(new ItemStack(BityardItems.VEGGIE_PIZZA, 6), new Object[] {"ctv", "bbb", 'c', BityardItems.CHEESE, 't', BityardItems.TOMATO, 'v', Items.CARROT, 'b', Items.BREAD});
         GameRegistry.addRecipe(new ItemStack(BityardItems.VEGGIE_PIZZA, 6), new Object[] {"ctv", "bbb", 'c', BityardItems.CHEESE, 't', BityardItems.TOMATO, 'v', BityardItems.CUCUMBER, 'b', Items.BREAD});
         GameRegistry.addRecipe(new ItemStack(BityardItems.BURGER), new Object[] {"ebe", "cst", "ebe", 'e', Items.AIR, 'b', Items.BREAD, 'c', BityardItems.CHEESE, 's', Items.COOKED_BEEF, 't', BityardItems.TOMATO});
+        GameRegistry.addRecipe(new ItemStack(BityardItems.CHICKEN_POT_PIE), new Object[] {"pcv", "www", 'w', Items.WHEAT, 'c', Items.CHICKEN, 'p', Items.POTATO, 'v', Items.CARROT});
 
         GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.CORN_DOG), Items.STICK, Items.COOKED_PORKCHOP, Items.BREAD);
         GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.HARP), Blocks.NOTEBLOCK, Blocks.DIRT, Items.STICK, Items.STRING, Items.LEATHER);
@@ -46,6 +57,8 @@ public class BityardRecipes
         GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.CHEESE), Items.MILK_BUCKET.setContainerItem(Items.BUCKET));
         GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.WITHER_BONEMEAL, 3), BityardItems.WITHER_BONE);
         GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.WITHER_BONEMEAL, 9), BityardBlocks.WITHER_BONE_BLOCK);
+        GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.ICE_CREAM), Items.BOWL, Blocks.ICE, Items.MILK_BUCKET.setContainerItem(Items.BUCKET), Items.SUGAR);
+        GameRegistry.addShapelessRecipe(new ItemStack(BityardItems.ICE_CREAM_CHOCOLATE), Items.BOWL, Blocks.ICE, Items.MILK_BUCKET.setContainerItem(Items.BUCKET), Items.SUGAR, new ItemStack(Items.DYE, 1, 3));
 
         for (int i = 0; i < ItemFish.FishType.values().length; i++)
         {
@@ -69,14 +82,5 @@ public class BityardRecipes
         GameRegistry.addRecipe(new ItemStack(BityardBlocks.SCAFFOLDING), new Object[] {"sss", "sss", "sss", 's', Items.STICK});
 
         GameRegistry.addSmelting(Blocks.SOUL_SAND, new ItemStack(BityardBlocks.SOUL_GLASS), 0.35f);
-
-        /* REMOVED/REPLACED */
-        // TODO - use CraftTweaker for this?
-        List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();
-        for (int i = 0; i < recipeList.size(); i++)
-        {
-            IRecipe recipe = recipeList.get(i);
-            if (recipe.getRecipeOutput().getItem() == Items.FISHING_ROD) recipeList.remove(i--);
-        }
     }
 }

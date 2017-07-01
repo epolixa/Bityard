@@ -1,0 +1,52 @@
+{
+    "pools": [{
+        "name": "main",
+        "rolls": 1,
+        "entries": [{
+            "entryName": "zombie_pigman",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:zombie_pigman}}"
+            }]
+        }, {
+            "entryName": "wither_skeleton",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:wither_skeleton}}"
+            }]
+        }, {
+            "entryName": "ghast",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:ghast}}"
+            }]
+        }, {
+            "entryName": "blaze",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:blaze}}"
+            }]
+        }, {
+            "entryName": "magma_cube",
+            "type": "item",
+            "name": "spawn_egg",
+            "weight": 1,
+            "functions": [{
+                "function": "set_nbt",
+                "tag": "{EntityTag:{id:minecraft:magma_cube}}"
+            }]
+        }]
+    }]
+}
