@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import sun.reflect.CallerSensitive;
+import sun.reflect.Reflection;
 
 @Mod(modid = Bityard.modid, name = Bityard.name, version = Bityard.version, acceptedMinecraftVersions = "[1.11.2]")
 public class Bityard
@@ -21,9 +23,9 @@ public class Bityard
 
     public static final String modid = "bityard";
     public static final String name = "Bityard";
-    public static final String version = "2017.07.01_1.11.2";
+    public static final String version = "2017.07.02_1.11.2";
     public static final String mcversion = "1.11.2";
-    private static boolean debug = true;
+    public static boolean enableLogs = true;
 
     @Mod.Instance(modid)
     public static Bityard instance;
@@ -49,11 +51,12 @@ public class Bityard
         proxy.postInit(event);
     }
 
-    public static void log(String className, String msg)
+    public static void log(String msg)
     {
-        if (debug)
+        if (enableLogs)
         {
-            System.out.println("[" + name + "] [" + className + "] : " + msg);
+            StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+            System.out.println("[" + name + "] [" + stackTraceElements[2].getClassName() + "] : " + msg);
         }
     }
 

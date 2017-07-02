@@ -56,7 +56,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     public EntityBityardFishHook(World worldIn, EntityPlayer fishingPlayer, double x, double y, double z)
     {
         super(worldIn, fishingPlayer, x, y, z);
-        System.out.println("fish hook: constructor 1 used");
+        Bityard.log("constructor 1 used");
         this.init(fishingPlayer);
         this.setPosition(x, y, z);
         this.prevPosX = this.posX;
@@ -67,7 +67,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     public EntityBityardFishHook(World worldIn, EntityPlayer fishingPlayer)
     {
         super(worldIn, fishingPlayer);
-        System.out.println("fish hook: constructor 2 used");
+        Bityard.log("constructor 2 used");
         this.init(fishingPlayer);
         this.shoot();
     }
@@ -75,12 +75,12 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     public EntityBityardFishHook(World worldIn)
     {
         this(worldIn, null); // wtf forge
-        System.out.println("fish hook: constructor 3 used");
+        Bityard.log("constructor 3 used");
     }
 
     private void init(EntityPlayer player)
     {
-        Bityard.log("EntityBityardFishHook", "fish hook: init");
+        Bityard.log("init");
         this.setSize(0.25F, 0.25F);
         this.ignoreFrustumCheck = true;
         this.angler = player;
@@ -101,7 +101,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     private void shoot()
     {
-        System.out.println("fish hook: shoot");
+        Bityard.log("shoot");
         float f = this.angler.prevRotationPitch + (this.angler.rotationPitch - this.angler.prevRotationPitch);
         float f1 = this.angler.prevRotationYaw + (this.angler.rotationYaw - this.angler.prevRotationYaw);
         float f2 = MathHelper.cos(-f1 * 0.017453292F - (float)Math.PI);
@@ -129,14 +129,14 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     protected void entityInit()
     {
-        System.out.println("fish hook: entity init");
+        Bityard.log("entity init");
         this.getDataManager().register(DATA_HOOKED_ENTITY, Integer.valueOf(0));
     }
 
     @Override
     public void notifyDataManagerChange(DataParameter<?> key)
     {
-        System.out.println("fish hook: notify data manager change");
+        Bityard.log("notify data manager change");
         super.notifyDataManagerChange(key);
     }
 
@@ -147,7 +147,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @SideOnly(Side.CLIENT)
     public boolean isInRangeToRenderDist(double distance)
     {
-        System.out.println("fish hook: is in range to render dist");
+        Bityard.log("is in range to render dist");
         double d0 = 64.0D;
         return distance < 4096.0D;
     }
@@ -159,7 +159,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @SideOnly(Side.CLIENT)
     public void setPositionAndRotationDirect(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean teleport)
     {
-        System.out.println("fish hook: set position and rotation direct (does nothing)");
+        Bityard.log("set position and rotation direct (does nothing)");
     }
 
     /**
@@ -168,7 +168,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     public void onUpdate()
     {
-        System.out.println("fish hook: update");
+        Bityard.log("update");
 
         // super.onUpdate();
         if (!this.world.isRemote)
@@ -181,15 +181,15 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
         if (this.angler == null)
         {
-            System.out.println("fish hook: angler is null");
+            Bityard.log("angler is null");
             this.setDead();
         }
         else if (this.world.isRemote || !this.shouldStopFishing())
         {
-            System.out.println("fish hook: world is client or don't stop fishing");
+            Bityard.log("world is client or don't stop fishing");
             if (this.inGround)
             {
-                System.out.println("fish hook: in ground");
+                Bityard.log("in ground");
                 ++this.ticksInGround;
 
                 if (this.ticksInGround >= 1200)
@@ -205,16 +205,16 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
             if (iblockstate.getMaterial() == Material.WATER || iblockstate.getMaterial() == Material.LAVA)
             {
-                System.out.println("fish hook: in water");
+                Bityard.log("in water");
                 f = BlockLiquid.getBlockLiquidHeight(iblockstate, this.world, blockpos);
             }
 
             if (this.currentState == EntityBityardFishHook.State.FLYING)
             {
-                System.out.println("fish hook: flying");
+                Bityard.log("flying");
                 if (this.caughtEntity != null)
                 {
-                    System.out.println("fish hook: caught an entity");
+                    Bityard.log("caught an entity");
                     this.motionX = 0.0D;
                     this.motionY = 0.0D;
                     this.motionZ = 0.0D;
@@ -224,7 +224,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
                 if (f > 0.0F)
                 {
-                    System.out.println("fish hook: set state to bobbing");
+                    Bityard.log("set state to bobbing");
                     this.motionX *= 0.3D;
                     this.motionY *= 0.2D;
                     this.motionZ *= 0.3D;
@@ -234,18 +234,18 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
                 if (!this.world.isRemote)
                 {
-                    System.out.println("fish hook: world is server");
+                    Bityard.log("world is server");
                     this.checkCollision();
                 }
 
                 if (!this.inGround && !this.onGround && !this.isCollidedHorizontally)
                 {
-                    System.out.println("fish hook: in air");
+                    Bityard.log("in air");
                     ++this.ticksInAir;
                 }
                 else
                 {
-                    System.out.println("fish hook: not in air");
+                    Bityard.log("not in air");
                     this.ticksInAir = 0;
                     this.motionX = 0.0D;
                     this.motionY = 0.0D;
@@ -254,13 +254,13 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
             }
             else
             {
-                System.out.println("fish hook: not flying");
+                Bityard.log("not flying");
                 if (this.currentState == EntityBityardFishHook.State.HOOKED_IN_ENTITY)
                 {
-                    System.out.println("fish hook: hooked in entity");
+                    Bityard.log("hooked in entity");
                     if (this.caughtEntity != null)
                     {
-                        System.out.println("fish hook: entity is not null");
+                        Bityard.log("entity is not null");
                         if (this.caughtEntity.isDead)
                         {
                             System.out.println("fish hook: entity is dead");
@@ -269,7 +269,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
                         }
                         else
                         {
-                            System.out.println("fish hook: entity is not dead");
+                            Bityard.log("entity is not dead");
                             this.posX = this.caughtEntity.posX;
                             double d2 = (double)this.caughtEntity.height;
                             this.posY = this.caughtEntity.getEntityBoundingBox().minY + d2 * 0.8D;
@@ -283,7 +283,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
                 if (this.currentState == EntityBityardFishHook.State.BOBBING)
                 {
-                    System.out.println("fish hook: bobbing");
+                    Bityard.log("bobbing");
                     this.motionX *= 0.9D;
                     this.motionZ *= 0.9D;
                     double d0 = this.posY + this.motionY - (double)blockpos.getY() - (double)f;
@@ -297,7 +297,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
                     if (!this.world.isRemote && f > 0.0F)
                     {
-                        System.out.println("fish hook: world is server");
+                        Bityard.log("world is server");
                         this.catchingFish(blockpos);
                     }
                 }
@@ -305,7 +305,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
             if (iblockstate.getMaterial() != Material.WATER && iblockstate.getMaterial() != Material.LAVA)
             {
-                System.out.println("fish hook: not in water");
+                Bityard.log("not in water");
                 this.motionY -= 0.03D;
             }
 
@@ -321,7 +321,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     private boolean shouldStopFishing()
     {
-        System.out.println("fish hook: should stop fishing?");
+        Bityard.log("should stop fishing?");
         ItemStack itemstack = this.angler.getHeldItemMainhand();
         ItemStack itemstack1 = this.angler.getHeldItemOffhand();
         boolean flag = itemstack.getItem() == BityardItems.FISHING_ROD;
@@ -340,7 +340,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     private void updateRotation()
     {
-        System.out.println("fish hook: update rotation");
+        Bityard.log("update rotation");
         float f = MathHelper.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
         this.rotationYaw = (float)(MathHelper.atan2(this.motionX, this.motionZ) * (180D / Math.PI));
 
@@ -370,7 +370,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     private void checkCollision()
     {
-        System.out.println("fish hook: check collision");
+        Bityard.log("check collision");
         Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
         Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
         RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
@@ -427,13 +427,13 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
 
     private void setHookedEntity()
     {
-        System.out.println("fish hook: set hooked entity");
+        Bityard.log("set hooked entity");
         this.getDataManager().set(DATA_HOOKED_ENTITY, Integer.valueOf(this.caughtEntity.getEntityId() + 1));
     }
 
     private void catchingFish(BlockPos p_190621_1_)
     {
-        System.out.println("fish hook: catching fish");
+        Bityard.log("catching fish");
         WorldServer worldserver = (WorldServer)this.world;
         int i = 1;
         BlockPos blockpos = p_190621_1_.up();
@@ -575,7 +575,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     protected boolean canBeHooked(Entity p_189739_1_)
     {
-        System.out.println("fish hook: can be hooked?");
+        Bityard.log("can be hooked?");
         return p_189739_1_.canBeCollidedWith() || p_189739_1_ instanceof EntityItem;
     }
 
@@ -596,7 +596,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     public int handleHookRetraction()
     {
-        System.out.println("fish hook: handle hook retraction");
+        Bityard.log("handle hook retraction");
         if (!this.world.isRemote && this.angler != null)
         {
             int i = 0;
@@ -731,14 +731,14 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @SideOnly(Side.CLIENT)
     public void handleStatusUpdate(byte id)
     {
-        System.out.println("fish hook: handle status update");
+        Bityard.log("handle status update");
         super.handleStatusUpdate(id);
     }
 
     @Override
     protected void bringInHookedEntity()
     {
-        System.out.println("fish hook: bring in hooked entity");
+        Bityard.log("bring in hooked entity");
         if (this.angler != null)
         {
             double d0 = this.angler.posX - this.posX;
@@ -758,7 +758,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     protected boolean canTriggerWalking()
     {
-        System.out.println("fish hook: can trigger walking?");
+        Bityard.log("can trigger walking?");
         return false;
     }
 
@@ -768,7 +768,7 @@ public class EntityBityardFishHook extends EntityFishHook implements IThrowableE
     @Override
     public void setDead()
     {
-        System.out.println("fish hook: set dead");
+        Bityard.log("set dead");
         super.setDead();
     }
 

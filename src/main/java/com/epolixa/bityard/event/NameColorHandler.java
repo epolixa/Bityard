@@ -31,19 +31,14 @@ public class NameColorHandler
     {
         if (event.getEntity() instanceof EntityPlayer)
         {
-            Bityard.log("NameColorHandler", "player right clicked");
-
             EntityPlayer player = (EntityPlayer)event.getEntity();
             Vec3d look = player.getLook(1).normalize();
-            Bityard.log("NameColorHandler", "view angle = x:" + look.xCoord + ", y:" + look.yCoord + ", z:" + look.zCoord);
             if (look.yCoord >= 0.95)
             {
-                Bityard.log("NameColorHandler", "player is looking up");
                 for (ItemStack stack : OreDictionary.getOres("dye"))
                 {
                     if (stack.getItem() == event.getItemStack().getItem())
                     {
-                        Bityard.log("NameColorHandler", "player using dye");
                         World world = event.getWorld();
                         stack = event.getItemStack();
                         String teamName = EnumDyeColor.byDyeDamage(stack.getMetadata()).getName();
@@ -52,7 +47,6 @@ public class NameColorHandler
 
                         if (scoreboard.getTeam(teamName) == null)
                         {
-                            Bityard.log("NameColorHandler", "team " + teamName + " does not exist, creating team");
                             ScorePlayerTeam team = scoreboard.createTeam(teamName);
                             TextFormatting tf = TextFormatting.RESET;
                             switch (teamName)
@@ -131,7 +125,6 @@ public class NameColorHandler
 
                         if (player.getTeam() == null)
                         {
-                            Bityard.log("NameColorHandler", "adding " + player.getName() + " to team " + teamName);
                             scoreboard.addPlayerToTeam(player.getName(), teamName);
                             player.swingArm(event.getHand());
                             player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);
@@ -165,9 +158,7 @@ public class NameColorHandler
                         }
                         if (!teamName.equals(player.getTeam().getRegisteredName()))
                         {
-                            Bityard.log("NameColorHandler", "removing " + player.getName() + " from team " + teamName);
                             scoreboard.removePlayerFromTeam(player.getName(), (ScorePlayerTeam)player.getTeam());
-                            Bityard.log("NameColorHandler", "adding " + player.getName() + " to team " + teamName);
                             scoreboard.addPlayerToTeam(player.getName(), teamName);
                             player.swingArm(event.getHand());
                             player.getHeldItem(event.getHand()).setCount(player.getHeldItem(event.getHand()).getCount() - 1);

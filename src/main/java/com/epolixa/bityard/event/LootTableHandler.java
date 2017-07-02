@@ -17,15 +17,14 @@ public class LootTableHandler
     {
         String name = event.getName().toString();
 
-        Bityard.log("LootTableLoader", "loading loot table " + name);
+        Bityard.log("loading loot table " + name);
 
         if (name.startsWith("minecraft:"))
         {
             name = name.replaceFirst("minecraft:", "");
             event.getTable().addPool(makeInjectPool(name, 1));
+            Bityard.log("injected loot table");
         }
-
-        Bityard.log("LootTableLoader", "injected loot table");
     }
 
     private LootPool makeInjectPool(String name, int weight)

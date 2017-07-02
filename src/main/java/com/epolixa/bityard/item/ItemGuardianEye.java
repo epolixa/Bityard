@@ -73,7 +73,7 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
 
     public EntityLiving findTarget(EntityPlayer player)
     {
-        Bityard.log(this.getClass().getName(), "enter findTarget");
+        Bityard.log("enter findTarget");
 
         EntityLiving ret = null;
 
@@ -97,7 +97,7 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
             ret = player.canEntityBeSeen(ret) ? ret : null;
         }
 
-        Bityard.log(this.getClass().getName(), "exit findTarget");
+        Bityard.log("exit findTarget");
         return ret;
     }
 
@@ -109,18 +109,18 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        Bityard.log(this.getClass().getName(), "enter onItemRightClick");
+        Bityard.log("enter onItemRightClick");
         ItemStack itemStackIn = playerIn.getHeldItem(handIn);
 
         if (playerIn.getCooldownTracker().hasCooldown(this))
         {
-            Bityard.log(this.getClass().getName(), "has cooldown");
-            Bityard.log(this.getClass().getName(), "exit onItemRightClick FAIL");
+            Bityard.log("has cooldown");
+            Bityard.log("exit onItemRightClick FAIL");
             return new ActionResult(EnumActionResult.FAIL, itemStackIn);
         }
         else
         {
-            Bityard.log(this.getClass().getName(), "does not have cooldown");
+            Bityard.log("does not have cooldown");
             ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemStackIn, worldIn, playerIn, handIn, true);
             if (ret != null) return ret;
             else
@@ -134,12 +134,12 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
                             SoundEvents.ENTITY_GUARDIAN_ATTACK,
                             SoundCategory.PLAYERS,
                             1, 1);
-                    Bityard.log(this.getClass().getName(), "exit onItemRightClick SUCCESS, target is not null");
+                    Bityard.log("exit onItemRightClick SUCCESS, target is not null");
                     return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
                 }
                 else
                 {
-                    Bityard.log(this.getClass().getName(), "exit onItemRightClick PASS, target is null");
+                    Bityard.log("exit onItemRightClick PASS, target is null");
                     return new ActionResult(EnumActionResult.PASS, itemStackIn);
                 }
             }
@@ -148,48 +148,48 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
 
     public void onUsingTick(ItemStack stack, EntityLivingBase player, int count)
     {
-        Bityard.log(this.getClass().getName(), "enter onUsingTick");
+        Bityard.log("enter onUsingTick");
 
         if (player instanceof EntityPlayer)
         {
             if (chargeTime % 10 == 0) // every half a second (10 ticks) validate target
             {
-                Bityard.log(this.getClass().getName(), "checking target");
+                Bityard.log("checking target");
                 EntityLiving newTarget = findTarget((EntityPlayer) player);
                 if (newTarget == null)
                 {
                     targetedEntity = newTarget;
                     chargeTime = 0;
                     player.stopActiveHand();
-                    Bityard.log(this.getClass().getName(), "target lost");
+                    Bityard.log("target lost");
                 }
                 else if (targetedEntity == null)
                 {
                     targetedEntity = newTarget;
-                    Bityard.log(this.getClass().getName(), "target found");
+                    Bityard.log("target found");
                 }
                 else if (newTarget.getUniqueID() != targetedEntity.getUniqueID())
                 {
                     targetedEntity = newTarget;
                     chargeTime = 0;
                     player.stopActiveHand();
-                    Bityard.log(this.getClass().getName(), "target changed");
+                    Bityard.log("target changed");
                 }
             }
             if (targetedEntity != null) {
-                Bityard.log(this.getClass().getName(), "charging");
+                Bityard.log("charging");
                 chargeTime++;
                 // draw beam
             }
         }
 
-        Bityard.log(this.getClass().getName(), "exit onUsingTick");
+        Bityard.log("exit onUsingTick");
     }
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
     {
-        Bityard.log(this.getClass().getName(), "enter onPlayerStoppedUsing");
+        Bityard.log("enter onPlayerStoppedUsing");
 
         if (entityLiving instanceof EntityPlayer && targetedEntity != null)
         {
@@ -203,13 +203,13 @@ public class ItemGuardianEye extends ItemBase implements ItemModelProvider
             if (f > 1.0D) {
                 targetedEntity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) entityLiving).setMagicDamage(), f);
                 entityplayer.getCooldownTracker().setCooldown(this, maxChargeTime);
-                Bityard.log(this.getClass().getName(), "damaged target");
+                Bityard.log("damaged target");
             }
 
             targetedEntity = null;
             chargeTime = 0;
         }
 
-        Bityard.log(this.getClass().getName(), "exit onPlayerStoppedUsing");
+        Bityard.log("exit onPlayerStoppedUsing");
     }
 }

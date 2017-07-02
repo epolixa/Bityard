@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -29,47 +30,53 @@ public class PlayerSitHandler
     {
         if (BityardKeyBinds.SIT.isPressed())
         {
-            Bityard.log("PlayerSitHandler", "player pressed sit key");
+            Bityard.log("player pressed sit key");
             EntityPlayer player = FMLClientHandler.instance().getClientPlayerEntity();
 
             if (FMLClientHandler.instance().getClient().inGameHasFocus && player != null) {
-                Bityard.log("PlayerSitHandler", "sending sit key message to server");
+                Bityard.log("sending sit key message to server");
                 NetworkHandler.INSTANCE.sendToServer(new MessageSit());
             }
         }
     }
 
-    public static boolean canSitOn(Block block)
+    public static boolean canSitOn(World world, BlockPos pos)
     {
-        Bityard.log("PlayerSitHandler", "checking if block can be sat on");
-        return block != Blocks.AIR &&
+        Bityard.log("checking if block can be sat on");
+        IBlockState state = world.getBlockState(pos);
+        Block block = state.getBlock();
+        return state.getCollisionBoundingBox(world, pos) != null &&
                block != Blocks.WATER && block != Blocks.FLOWING_WATER &&
                block != Blocks.LAVA && block != Blocks.FLOWING_LAVA;
     }
 
     public static void playerSit(EntityPlayer player)
     {
-        Bityard.log("PlayerSitHandler", "attempting sit action");
+        Bityard.log("attempting sit action");
         if (player != null)
         {
-            Bityard.log("PlayerSitHandler", "player is not null");
+            Bityard.log("player is not null");
             World world = player.world;
             if (player.isRiding())
             {
-                Bityard.log("PlayerSitHandler", "player is already riding something");
+                Bityard.log("player is already riding something");
                 if (player.getRidingEntity() instanceof Seat)
                 {
-                    Bityard.log("PlayerSitHandler", "player is already sitting so dismount seat");
+                    Bityard.log("player is already sitting so dismount seat");
                     player.dismountRidingEntity();
                 }
             }
-            else if (canSitOn(world.getBlockState(player.getPosition().add(0,-1,0)).getBlock()))
+            else if (canSitOn(world, player.getPosition().add(0,-1,0)))
             {
-                Bityard.log("PlayerSitHandler", "sit");
-                Seat seat = new Seat(player);
-                synchronized (world) {
-                    Bityard.log("PlayerSitHandler", "spawning seat entity");
-                    world.spawnEntity(seat);
+                Bityard.log("player is trying to sit");
+                if (!world.isRemote)
+                {
+                    WorldServer worldServer = (WorldServer)world;
+                    Bityard.log("spawning seat entity");
+                    Seat seat = new Seat(worldServer, player.getPosition());
+                    worldServer.spawnEntity(seat);
+                    Bityard.log("setting player to start riding seat");
+                    player.startRiding(seat);
                 }
             }
         }
@@ -77,53 +84,60 @@ public class PlayerSitHandler
 
     public static class Seat extends Entity {
 
-        public Seat(EntityPlayer player)
+        public Seat(World world, BlockPos pos)
         {
-            this(player.world);
-            Bityard.log("Seat", "create seat, set position");
+            this(world);
 
-            this.setPosition(player.posX, player.posY, player.posZ);
-
-            Bityard.log("Seat", "set player riding");
-            player.startRiding(this);
+            Bityard.log("creating seat, set position");
+            this.setPosition(pos.getX(), pos.getY(), pos.getZ());
         }
 
-        public Seat(World par1World)
+        public Seat(World world)
         {
-            super(par1World);
-            Bityard.log("Seat", "create seat, set size");
+            super(world);
 
+            Bityard.log("creating seat, set size");
             this.setSize(0F, 0F);
         }
 
         @Override
         public void onUpdate()
         {
-            Bityard.log("Seat", "entity update");
+            Bityard.log("entity update");
             super.onUpdate();
 
-            Bityard.log("Seat", "check passengers");
+            Bityard.log("check passengers");
             List<Entity> passengers = getPassengers();
             if(passengers.isEmpty())
             {
-                Bityard.log("Seat", "no passengers, die");
+                Bityard.log("no passengers, die");
                 setDead();
+                return;
+            }
+            for (Entity passenger : passengers)
+            {
+                if (passenger.isSneaking())
+                {
+                    Bityard.log("passenger dismounting, die");
+                    setDead();
+                    return;
+                }
             }
         }
 
         @Override
         public void updatePassenger(Entity passenger)
         {
-            Bityard.log("Seat", "update passenger");
+            Bityard.log("update passenger");
             if (this.isPassenger(passenger))
             {
-                Bityard.log("Seat", "has passenger");
+                Bityard.log("has passenger");
                 EntityPlayer player = (EntityPlayer) passenger;
-                Bityard.log("Seat", "set passenger position");
+                Bityard.log("set passenger position");
                 player.setPosition(this.posX, this.posY - 0.6, this.posZ);
                 if (player.isSprinting())
                 {
-                    Bityard.log("Seat", "player is sprinting, stop that");
+                    Bityard.log("player is sprinting, stop that");
                     player.setSprinting(false);
                 }
             }
