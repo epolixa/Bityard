@@ -46,6 +46,7 @@ public class BityardItems
     public static ItemFish FISH;
     public static ItemFoodBase RAW_FISH;
     public static ItemFoodBase COOKED_FISH;
+    public static ItemFoodBase SUSHI;
     public static ItemBityardFishingRod FISHING_ROD;
     public static ItemRing RING;
     public static ItemWitherBone WITHER_BONE;
@@ -108,6 +109,7 @@ public class BityardItems
         FISH = register(new ItemFish());
         RAW_FISH = register(new ItemFoodBase("raw_fish", 1, 0.1f, false));
         COOKED_FISH = register(new ItemFoodBase("cooked_fish", 3, 0.8f, false));
+        SUSHI = register(new ItemFoodBase("sushi", 1, 0.9f, false));
         FISHING_ROD = register(new ItemBityardFishingRod());
         RING = register(new ItemRing());
         WITHER_BONE = register(new ItemWitherBone());

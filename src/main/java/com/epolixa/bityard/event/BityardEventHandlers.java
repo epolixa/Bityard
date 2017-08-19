@@ -1,7 +1,6 @@
 package com.epolixa.bityard.event;
 
 import net.minecraftforge.common.MinecraftForge;
-import scala.collection.parallel.ParIterableLike;
 
 public class BityardEventHandlers
 {
@@ -18,5 +17,7 @@ public class BityardEventHandlers
         MinecraftForge.EVENT_BUS.register(new ZombieDropsHandler());
         MinecraftForge.EVENT_BUS.register(new CropExpHandler());
         MinecraftForge.EVENT_BUS.register(new NameColorHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerCriticalHealthHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerTossItemHandler());
     }
 }
